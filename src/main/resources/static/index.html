@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        
+        <script>
+            function get(){
+                let view = data.getElementById("id");
+                $.ajax({
+                    url: "http://localhost:8080/GET",
+                    dataType: 'text',
+                    success: function (result) {
+                        view.innerHTML = result;
+                    }
+                });
+            }     
+            function post(){
+                id view = document.getElementById("view");
+                let id = document.getElementById("id").value;
+                let nosurat = document.getElementById("noSurat").value;
+                let judul = document.getElementById("judul").value;
+                let tebusan = document.getElementById("tebusan").value;
+                let dataText = {id: id, nosurat: noSurat, judul: judul, tebusan: tebusan};
+                let dataJson = JSON.stringify(dataText);
+                $.ajax({
+                    url: "http://localhost:8080/POST",
+                    method: "POST",
+                    data: dataJson,
+                    contentType: 'application/json',
+                    dataType: 'text',
+                    success: function (result) {
+                        console.log(result);
+                    }
+                });
+            }
+            
+            function put(){
+                id view = document.getElementById("view");
+                let id = document.getElementById("id").value;
+                let nosurat = document.getElementById("noSurat").value;
+                let judul = document.getElementById("judul").value;
+                let tebusan = document.getElementById("tebusan").value;
+                let dataText = {id: id, nosurat: noSurat, judul: judul, tebusan: tebusan};
+                let dataJson = JSON.stringify(dataText);
+                $.ajax({
+                    url: "http://localhost:8080/PUT",
+                    method: "PUT",
+                    data: dataJson,
+                    contentType: 'application/json',
+                    dataType: 'text',
+                    success: function (result) {
+                        console.log(result);
+                    }
+                });
+            }
+            function del(){
+                let id = document.getElementById("id").value;
+                let dataText = {id: id, nosurat: noSurat, judul: judul, tebusan: tebusan};
+                let dataJson = JSON.stringify(dataText);
+                $.ajax({
+                    url: "http://localhost:8080/DELETE",
+                    method: "DELETE",
+                    data: dataJson,
+                    contentType: 'application/json',
+                    dataType: 'text',
+                    success: function (result) {
+                        console.log(result);
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <body>
+        <div>TODO write content</div>
+        <div>RESTful</div>
+        <input type="text", id="id", name="id"><br>
+        <input type="text", id="no_surat", name="noSurat"><br>
+        <input type="text", id="judul", name="judul"><br>
+        <input type="text", id="tembusan", name="tembusan"><br>
+        <input type="file", id="file", name="file"><br>
+        <input type="text", id="ts", name="ts"><br>
+        
+        <br>
+        <button onclick="get()">GET</button>
+        <button onclick="post()">POST</button>
+        <button onclick="put()">PUT</button>
+        <button onclick="del()">DELETE</button>
+        <br>
+        
+    </body>
+</html>
